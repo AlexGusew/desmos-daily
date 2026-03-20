@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desmos Daily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="popup">
+      <header class="popup-header">
+        <span class="popup-logo">D</span>
+        <div>
+          <h1 class="popup-title">Desmos Daily</h1>
+          <p id="status" class="popup-status">Loading...</p>
+        </div>
+      </header>
+
+      <div id="challenge" class="challenge hidden">
+        <div class="graph-card">
+          <span class="graph-label">TARGET</span>
+          <img id="graph-img" alt="Target graph" />
+        </div>
+
+        <p class="challenge-hint">Recreate this graph in Desmos</p>
+
+        <button id="check-btn" class="check-btn">
+          Check Answer
+        </button>
+
+        <p id="result" class="result hidden"></p>
+      </div>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
