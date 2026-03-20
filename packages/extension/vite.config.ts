@@ -21,23 +21,25 @@ export default defineConfig({
     },
   },
   plugins: [
-    {
-      name: "copy-manifest",
-      closeBundle() {
+    (() => {
+      function copyStatic() {
+        mkdirSync(resolve(__dirname, "dist/icons"), { recursive: true });
         copyFileSync(
           resolve(__dirname, "manifest.json"),
           resolve(__dirname, "dist/manifest.json")
         );
-        const iconsSource = resolve(__dirname, "icons");
-        const iconsDest = resolve(__dirname, "dist/icons");
-        mkdirSync(iconsDest, { recursive: true });
-        for (const file of readdirSync(iconsSource)) {
+        for (const file of readdirSync(resolve(__dirname, "icons"))) {
           copyFileSync(
-            resolve(iconsSource, file),
-            resolve(iconsDest, file)
+            resolve(__dirname, "icons", file),
+            resolve(__dirname, "dist/icons", file)
           );
         }
-      },
-    },
+      }
+      return {
+        name: "copy-static",
+        buildStart: copyStatic,
+        closeBundle: copyStatic,
+      };
+    })(),
   ],
 });
