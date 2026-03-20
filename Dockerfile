@@ -12,6 +12,7 @@ RUN pnpm --filter server build
 
 FROM base AS runtime
 WORKDIR /app
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY packages/server/package.json packages/server/
 RUN pnpm install --frozen-lockfile --filter server --prod
