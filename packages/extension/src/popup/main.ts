@@ -13,6 +13,7 @@ interface Challenge {
     yRange?: [number, number];
   };
   date: string;
+  selectedDate: string;
 }
 
 let currentChallenge: Challenge | null = null;
@@ -230,7 +231,7 @@ async function loadChallenge() {
 
     const challenge: Challenge = await res.json();
     currentChallenge = challenge;
-    const dateStr = String(challenge.date).slice(0, 10);
+    const dateStr = String(challenge.selectedDate).slice(0, 10);
     const [y, m, day] = dateStr.split("-").map(Number);
     const d = new Date(y, m - 1, day);
     statusEl.textContent = d.toLocaleDateString("en-US", {

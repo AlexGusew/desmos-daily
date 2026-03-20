@@ -5,6 +5,17 @@ import type { RowDataPacket } from "mysql2";
 
 const router = Router();
 
+const fallbackChallenge: Challenge = {
+  id: 0,
+  date: "1970-01-01",
+  selectedDate: "1970-01-01",
+  targetExpressions: ["y=x"],
+  graphData: {
+    xRange: [-10, 10],
+    yRange: [-10, 10],
+  },
+};
+
 router.get("/today", async (_req, res) => {
   try {
     const today = new Date().toISOString().slice(0, 10);
@@ -14,7 +25,10 @@ router.get("/today", async (_req, res) => {
     );
 
     if (rows.length === 0) {
-      res.status(404).json({ error: "No challenge for today" });
+      res.json({
+        ...fallbackChallenge,
+        selectedDate: today,
+      });
       return;
     }
 
@@ -31,6 +45,7 @@ router.get("/today", async (_req, res) => {
     const challenge: Challenge = {
       id: rows[0].id,
       date: rows[0].date,
+      selectedDate: today,
       targetExpressions: Array.isArray(rawExpressions)
         ? rawExpressions
         : [rawExpressions],
