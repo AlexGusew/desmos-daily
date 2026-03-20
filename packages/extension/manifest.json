@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Desmos Daily",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Daily graph challenge on Desmos — match the target graph by creating functions in the Desmos calculator",
   "icons": {
     "16": "icons/icon16.png",
