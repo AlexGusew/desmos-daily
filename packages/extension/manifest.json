@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Desmos Daily",
+  "version": "0.1.0",
+  "description": "Daily graph challenge on Desmos — match the target graph by creating functions in the Desmos calculator",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://*.desmos.com/*"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Desmos Daily"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.desmos.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}

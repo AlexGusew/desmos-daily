@@ -6,33 +6,54 @@
     <title>Desmos Daily</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="popup">
       <header class="popup-header">
-        <span class="popup-logo">D</span>
-        <div>
-          <h1 class="popup-title">Desmos Daily</h1>
-          <p id="status" class="popup-status">Loading...</p>
-        </div>
+        <h1 class="popup-title">Desmos Daily</h1>
+        <p id="status" class="popup-status">Loading...</p>
       </header>
 
+      <div id="how-it-works" class="how-it-works">
+        <h2 class="how-it-works-title">How it works</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-number">1</span>
+            <div>
+              <strong>Open Desmos</strong>
+              <p>Go to <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">desmos.com/calculator</a></p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-number">2</span>
+            <div>
+              <strong>Launch the challenge</strong>
+              <p>Click this extension icon to load today's target curve</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-number">3</span>
+            <div>
+              <strong>Match the curve</strong>
+              <p>Write expressions in Desmos to match the blue dashed target</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
       <div id="challenge" class="challenge hidden">
-        <div class="graph-card">
-          <span class="graph-label">TARGET</span>
-          <img id="graph-img" alt="Target graph" />
-        </div>
-
-        <p class="challenge-hint">Recreate this graph in Desmos</p>
-
-        <button id="check-btn" class="check-btn">
-          Check Answer
-        </button>
-
+        <label class="toggle-row">
+          <span>Show progress bar</span>
+          <input type="checkbox" id="bar-toggle" checked />
+        </label>
         <p id="result" class="result hidden"></p>
       </div>
+
+      <footer class="popup-footer">
+        <a href="https://github.com/alexcoders/desmos-daily" target="_blank" rel="noopener">Star on GitHub &#9733;</a>
+      </footer>
     </div>
 
     <script type="module" src="./main.ts"></script>
