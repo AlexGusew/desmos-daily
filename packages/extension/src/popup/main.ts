@@ -17,6 +17,11 @@ interface Challenge {
 let currentChallenge: Challenge | null = null;
 let completed = false;
 
+function showHowItWorks() {
+  statusEl.textContent = "Ready to play";
+  challengeEl.classList.add("hidden");
+  resultEl.classList.add("hidden");
+}
 
 async function getActiveTab(): Promise<chrome.tabs.Tab | null> {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -219,7 +224,7 @@ async function injectOntoPage(
 
 async function loadChallenge() {
   try {
-    const res = await fetch("http://localhost:3000/api/challenges/today");
+    const res = await fetch("http://osso8sk8occc00sc8k4scgsc.65.109.235.206.sslip.io/api/challenges/today");
     if (!res.ok) throw new Error("Failed to fetch challenge");
 
     const challenge: Challenge = await res.json();
