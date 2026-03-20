@@ -1,6 +1,7 @@
 {
   "name": "desmos-daily",
   "private": true,
+  "packageManager": "pnpm@10.12.4",
   "scripts": {
     "dev:extension": "pnpm --filter extension dev",
     "dev:server": "pnpm --filter server dev",
