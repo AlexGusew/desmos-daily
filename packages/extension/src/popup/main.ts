@@ -2,6 +2,7 @@ const statusEl = document.getElementById("status")!;
 const challengeEl = document.getElementById("challenge")!;
 const resultEl = document.getElementById("result")!;
 
+const API_BASE_URL = "https://api.desmos-daily.alexcoders.com";
 const TARGET_ID_PREFIX = "desmos-daily-target-";
 const CHECK_INTERVAL_MS = 2000;
 
@@ -224,7 +225,7 @@ async function injectOntoPage(
 
 async function loadChallenge() {
   try {
-    const res = await fetch("http://osso8sk8occc00sc8k4scgsc.65.109.235.206.sslip.io/api/challenges/today");
+    const res = await fetch(`${API_BASE_URL}/api/challenges/today`);
     if (!res.ok) throw new Error("Failed to fetch challenge");
 
     const challenge: Challenge = await res.json();
